@@ -1,0 +1,29 @@
+name: Run Component Tests
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # リポジトリをクローン
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Node.js を設定
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      # 依存関係をインストール
+      - name: Install dependencies
+        run: npm install
+
+      # テストを実行
+      - name: Run tests
+        run: npm test -- --watchAll=false
