@@ -5,7 +5,7 @@ import { render, screen,waitFor} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import dotenv from 'dotenv';
 
-dotenv.config();
+dotenv.config({ path: './.env' });
 
 describe("Add Record Test", () => {
   it("学習内容と時間を入力して登録ボタンを押すと記録が追加される", async () => {
