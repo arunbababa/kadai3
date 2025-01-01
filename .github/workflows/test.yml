@@ -20,6 +20,12 @@ jobs:
         with:
           node-version: 18
 
+      # 環境変数を .env ファイルとして保存
+      - name: Set environment variables
+        run: |
+          echo "VITE_SUPABASE_URL=${{ secrets.SUPABASE_URL }}" >> .env
+          echo "VITE_SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }}" >> .env
+
       # 依存関係をインストール
       - name: Install dependencies
         run: npm install
@@ -27,6 +33,3 @@ jobs:
       # テストを実行
       - name: Run tests
         run: npm test -- --watchAll=false
-        env:
-          VITE_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          VITE_SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
