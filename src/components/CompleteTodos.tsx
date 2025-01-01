@@ -25,7 +25,7 @@ export const CompleteTodos:React.FC<CompleteTodosProps> = (props) => {
                 {todo.title} - {todo.time} 時間
               </p>
               {/* 削除ボタン */}
-              <button onClick={() => {if (todo.id !== null) {
+              <button date-testid="delete-button" onClick={() => {if (todo.id !== null) {
                   onDelete(todo.id);
                 }
               }} style={{ marginLeft: "10px", color: "red" }}>

@@ -19,10 +19,9 @@ describe("Delete Record Test", () => {
       console.log("Initial Count:", initialCount);
 
       // 最初の削除ボタンをクリック
-      const deleteButton = screen.getAllByText("削除")[0];
+      const deleteButton = screen.findAllByTestId("delete-button")[0];
       console.log("削除ボタン:", deleteButton);
       await userEvent.click(deleteButton);
-
       console.log("削除ボタンをクリックしました");
 
       // Supabaseの削除処理を確認する
