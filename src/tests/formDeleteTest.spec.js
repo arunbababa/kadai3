@@ -22,7 +22,7 @@ describe("Delete Record Test", () => {
 
     // リストが更新されるまで待機して確認
     await waitFor(() => {
-      const updatedRecords = screen.getAllByTestId("record-item");
+      const updatedRecords = screen.findAllByTestId("record-item");
       const updatedCount = updatedRecords.length;
       console.log("Updated Count after deletion:", updatedCount);
 
