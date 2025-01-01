@@ -75,8 +75,15 @@ function App() {
   };
 
   const onClickDelete = async (id: number) => {
+    
     await deleteTodo(id);
+    console.log(`deleteTodo: ID ${id} を削除します`);
+    const result = await deleteTodo(id);
+    console.log("deleteTodo result:", result);
+
     const updatedTodos = await getAllTodos();
+    console.log("updatedTodos:", updatedTodos);
+
     setTodos(updatedTodos); // 最新のデータで画面を更新
   };
 
