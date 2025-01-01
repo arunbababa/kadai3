@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
-import { InputRecord } from "./components/InputRecord.js";
-import { CompleteTodos } from "./components/CompleteTodos.js";
-import { addTodo, deleteTodo, getAllTodos } from "../utils/supabasefunction.js";
+import { InputRecord } from "./components/InputRecord";
+import { CompleteTodos } from "./components/CompleteTodos";
+const { addTodo, deleteTodo, getAllTodos } = require("../utils/supabasefunction.js");
 
 export type Todo = {
   id: number | null;
@@ -28,7 +28,7 @@ function App() {
     const getTodos = async () => {
       const todos: Todo[] = await getAllTodos();
       setTodos(todos);
-      console.log(todos);
+      // console.log(todos);
     };
     getTodos();
   }, []);

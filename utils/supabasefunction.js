@@ -9,7 +9,7 @@ export const  getAllTodos = async () => {
       console.error("Supabaseエラー:", error);
       return [];
     }
-    console.log("取得したデータ:", data);
+    // console.log("取得したデータ:", data);
     return data; // 全データを返す
   } catch (e) {
     console.error("エラーが発生しました:", e);
