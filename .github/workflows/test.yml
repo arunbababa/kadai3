@@ -27,3 +27,6 @@ jobs:
       # テストを実行
       - name: Run tests
         run: npm test -- --watchAll=false
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
