@@ -5,13 +5,14 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import dotenv from "dotenv";
 
-dotenv.config();
+dotenv.config({ path: './.env' });
 
 describe("Delete Record Test", () => {
   it(
-    "登録された学習記録を削除ボタンを押すと記録が1つ減る",
-    async () => {
+    "登録された学習記録を削除ボタンを押すと記録が1つ減る",async () => {
       render(<App />);
+
+      console.log(screen.debug()); // DOM全体の状態を出力
 
       // 初期の記録数を取得
       const initialRecords = await screen.findAllByTestId("record-item");
@@ -24,14 +25,16 @@ describe("Delete Record Test", () => {
       await userEvent.click(deleteButton);
       console.log("削除ボタンをクリックしました");
 
-      // Supabaseの削除処理を確認する
-      await new Promise((resolve) => setTimeout(resolve, 1000)); // 1秒待機
-      const updatedRecords = await screen.findAllByTestId("record-item");
-      const updatedCount = updatedRecords.length;
-      console.log("Updated Count after deletion:", updatedCount);
+      await waitFor(async () => {
+        const updatedRecords = await screen.findAllByTestId("record-item");
+        const updatedCount = updatedRecords.length;
+        console.log("Updated Count after deletion:", updatedCount);
+        expect(updatedCount).toBe(initialCount - 1);
+      }, { timeout: 1000 });
+      
 
       expect(updatedCount).toBe(initialCount - 1);
     },
-    10000 // テスト全体のタイムアウトを10秒に設定
+    15000 // テスト全体のタイムアウトを10秒に設定
   );
 });

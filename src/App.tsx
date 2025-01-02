@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { InputRecord } from "./components/InputRecord";
 import { CompleteTodos } from "./components/CompleteTodos";
-const { addTodo, deleteTodo, getAllTodos } = require("../utils/supabasefunction.js");
+import { addTodo, deleteTodo, getAllTodos } from "../utils/supabasefunction.js";
 
 export type Todo = {
   id: number | null;
